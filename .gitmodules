@@ -1,0 +1,18 @@
+[submodule ".bash-git-prompt"]
+	path = .bash-git-prompt
+	url = git@github.com:pseudocc/bash-git-prompt.git
+[submodule ".vim/pack/git-plugins/start/ale"]
+	path = .vim/pack/git-plugins/start/ale
+	url = git@github.com:dense-analysis/ale.git
+[submodule ".vim/pack/git-plugins/start/indentLine"]
+	path = .vim/pack/git-plugins/start/indentLine
+	url = git@github.com:Yggdroot/indentLine.git
+[submodule ".vim/pack/git-plugins/start/nerdtree"]
+	path = .vim/pack/git-plugins/start/nerdtree
+	url = git@github.com:preservim/nerdtree.git
+[submodule ".vim/pack/git-plugins/start/vim-airline"]
+	path = .vim/pack/git-plugins/start/vim-airline
+	url = git@github.com:vim-airline/vim-airline
+[submodule ".vim/pack/git-plugins/start/vim-airline-themes"]
+	path = .vim/pack/git-plugins/start/vim-airline-themes
+	url = git@github.com:vim-airline/vim-airline-themes

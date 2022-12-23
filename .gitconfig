@@ -1,0 +1,19 @@
+# vim:noet:ts=4:sts=4
+[core]
+	editor = vim
+[user]
+	name = pseudoc
+	email = atlas.yu@canonical.com
+	signingKey = 2971B988CC350CAC0728420B3EF18CAD891965D5
+[url "git@github.com:"]
+	insteadof = gh:
+[url "git+ssh://pseudoc@git.launchpad.net/"]
+	insteadof = lp:
+[init]
+	defaultBranch = atlas
+[gpg]
+	program = gpg2
+[commit]
+	gpgSign = true
+[alias]
+	lol = log --oneline

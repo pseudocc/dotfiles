@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# user private bin
+if [ -d "$HOME/bin" ]; then
+    PATH="$HOME/bin:$PATH"
+fi
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+export PATH
+
+# rustup shell setup
+if [ -f "$HOME/.cargo/env" ]; then
+    source "$HOME/.cargo/env"
+fi
+
+# GPG key
+if [ -f "$HOME/.gnupg/env" ]; then
+    source "$HOME/.gnupg/env"
+fi

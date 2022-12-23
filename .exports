@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# vim as default editor
+export EDITOR=vim
+
+# use ibus as our input methods
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+
+# debian develop
+export DEBEMAIL="atlas.yu@canonical.com"
+export DEBFULLNAME="Atlas Yu"

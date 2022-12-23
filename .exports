@@ -11,3 +11,5 @@ export QT_IM_MODULE=ibus
 # debian develop
 export DEBEMAIL="atlas.yu@canonical.com"
 export DEBFULLNAME="Atlas Yu"
+
+export GPG_TTY=$(tty)

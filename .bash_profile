@@ -9,6 +9,9 @@ esac
 for file in $HOME/.{path,bash_aliases,bash_prompt,exports,misc}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
+for file in $HOME/.bash_completion.d/*.sh.; do
+    [ -r "$file" ] && [ -f "$file" ] && source "$file"
+done
 unset file;
 
 # don't put duplicate lines or lines starting with space in the history.

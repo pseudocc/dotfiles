@@ -4,7 +4,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" || return
 git pull
 
 function do-it() {
-    rsync --exclude ".git/" \
+    rsync --exclude ".git" \
           --exclude ".gitmodules" \
           --exclude "bootstrap.sh" \
           --exclude "README.md" \

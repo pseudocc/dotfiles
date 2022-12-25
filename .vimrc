@@ -51,12 +51,15 @@ let g:indentLine_leadingSpaceEnabled=1
 let g:indentLine_leadingSpaceChar="·"
 let g:indentLine_char="·"
 
+" airline
+let g:airline_theme="onedark"
+
 " ALE
 highlight ALEWarning ctermbg=172
 highlight ALEError ctermbg=052
 let g:ale_sign_error="\u2297 "
 let g:ale_sign_warning="\u26A0 "
-let g:ale_fixers = {
+let g:ale_fixers={
   \ 'typescript': ['deno'],
   \ 'javascript': ['deno'],
   \ }
@@ -74,8 +77,8 @@ let g:NERDTreeDirArrowCollapsible = '-'
 
 " Strip trailing whitespace
 function! StripWS()
-  let cursor = getpos(".")
-  let query = getreg('/')
+  let cursor=getpos(".")
+  let query=getreg('/')
   :%s/\s\+$//e
   call setpos('.', cursor)
   call setreg('/', query)
@@ -83,5 +86,3 @@ endfunction
 noremap <leader>ss :call StripWS()<CR>
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
-
-" call ch_logfile(expand('/tmp/chlogfile.log'), 'w')

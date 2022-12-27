@@ -53,6 +53,11 @@ let g:indentLine_char="·"
 
 " airline
 let g:airline_theme="onedark"
+let g:airline_symbols={
+  \ 'linenr': " ",
+  \ 'maxlinenr': " \u2630",
+  \ 'colnr': " ",
+  \ }
 
 " ALE
 highlight ALEWarning ctermbg=172

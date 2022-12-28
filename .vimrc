@@ -27,13 +27,13 @@ inoremap <S-Tab> <C-V><Tab>
 nnoremap <Esc>[1;5A :m .-2<CR>==
 nnoremap <Esc>[1;5B :m .+1<CR>==
 nnoremap <Esc>[1;5C xp
-nnoremap <Esc>[1;5D xhP
+nnoremap <Esc>[1;5D hxph
 
 inoremap <Esc>[1;5A <Esc>:m .-2<CR>==gi
 inoremap <Esc>[1;5B <Esc>:m .+1<CR>==gi
-inoremap <Esc>[1;5C <Esc>xpgi
-inoremap <Esc>[1;5D <Esc>xhPgi
-
+inoremap <Esc>[1;5C <Esc>lxpi
+inoremap <Esc>[1;5D <Esc>xphi
+12345
 vnoremap <Esc>[1;5A :m '<-2<CR>gv=gv
 vnoremap <Esc>[1;5B :m '>+1<CR>gv=gv
 
@@ -68,8 +68,8 @@ let g:ale_fixers={
   \ 'typescript': ['deno'],
   \ 'javascript': ['deno'],
   \ }
-nnoremap <silent> <C-k> <Plug>(ale_previous_wrap)
-nnoremap <silent> <C-j> <Plug>(ale_next_wrap)
+nnoremap <silent> <C-k> :ALEPreviousWrap
+nnoremap <silent> <C-j> :ALENextWrap
 set omnifunc=ale#completion#OmniFunc
 
 " NERDTree

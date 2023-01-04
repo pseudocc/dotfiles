@@ -17,3 +17,7 @@ map.set('v', '<M-j>', [[:m '>+1<CR>gv=gv]], no_remap)
 
 map.set("n", "<leader>f", vim.lsp.buf.format, no_remap)
 map.set('n', '<leader>W', [[:w !sudo tee % > /dev/null<CR>]], no_remap)
+
+map.set('n', '<leader>[', vim.cmd.bprevious, no_remap)
+map.set('n', '<leader>]', vim.cmd.bnext, no_remap)
+map.set('n', '<leader><leader>', vim.cmd.ball, no_remap)

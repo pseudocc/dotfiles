@@ -17,3 +17,5 @@
 	gpgSign = true
 [alias]
 	lol = log --oneline
+[pull]
+	rebase = true

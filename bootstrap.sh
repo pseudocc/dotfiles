@@ -81,6 +81,12 @@ function do-it() {
             -c 'so' \
             -c 'autocmd User PackerComplete quitall' \
             -c 'PackerSync'
+        mkdir -p "$HOME/.local/bin"
+        for editor in {vi,vim}; do
+            if [ ! -f "$HOME/.local/bin/$editor" ]; then
+                ln -s "$(which nvim)" "$HOME/.local/bin/$editor"
+            fi
+        done
     fi
 
     rsync --exclude ".git" \

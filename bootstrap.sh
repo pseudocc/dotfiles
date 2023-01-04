@@ -62,8 +62,13 @@ if [ "$run_pull" == "y" ]; then
 fi
 
 function do-it() {
+    if [ "$dry_run" == "" ]; then
+        rm -rf "$HOME/.config/nvim/after"
+    fi
+
     rsync --exclude ".git" \
         --exclude ".gitmodules" \
+        --exclude "after" \
         --exclude "bootstrap.sh" \
         --exclude "README.md" \
         --exclude "LICENSE" \
@@ -77,11 +82,18 @@ function do-it() {
             -c 'autocmd User PackerComplete quitall' \
             -c 'PackerSync'
     fi
+
+    rsync --exclude ".git" \
+        --exclude ".gitmodules" \
+        --exclude "bootstrap.sh" \
+        --exclude "README.md" \
+        --exclude "LICENSE" \
+        -avh --no-perms $dry_run . ~
 }
 
 function check-prerequisites() {
-    which rg || echo "ripgrep is not installed!" && exit 1
-    which tree-sitter || echo "tree-sitter is not installed!" && exit 1
+    which rg &> /dev/null || (echo "ripgrep is not installed!" && exit 1)
+    which tree-sitter &> /dev/null || (echo "tree-sitter is not installed!" && exit 1)
 }
 
 if [ "$force" == "y" ]; then
@@ -95,5 +107,6 @@ else
     fi
 fi
 
-unset do-it name force skip_post dry_run run_pull
+unset do-it check-prerequisites
+unset name force skip_post dry_run run_pull
 # vim:ts=4:sts=4

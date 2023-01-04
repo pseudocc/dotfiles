@@ -5,16 +5,18 @@ git pull
 
 function do-it() {
     rsync --exclude ".git" \
-          --exclude ".gitmodules" \
-          --exclude "bootstrap.sh" \
-          --exclude "README.md" \
-          --exclude "LICENSE" \
-          -avh --no-perms . ~
-    source "$HOME/.bash_profile"
+        --exclude ".gitmodules" \
+        --exclude "bootstrap.sh" \
+        --exclude "README.md" \
+        --exclude "LICENSE" \
+        -avh --no-perms . ~
 
-    for doc in $HOME/.vim/pack/git-plugins/start/*/doc; do
-        vim -u NONE -c "helptags $doc" -c "q"
-    done
+    # Post processing
+    source "$HOME/.bash_profile"
+    nvim --headless "$HOME/.config/nvim/lua/plugins.lua" \
+        -c 'so' \
+        -c 'autocmd User PackerComplete quitall' \
+        -c 'PackerSync'
 }
 
 if [ "$1" == "--force" ] || [ "$1" == "-f" ]; then

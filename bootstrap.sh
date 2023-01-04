@@ -1,7 +1,65 @@
 #!/usr/bin/env bash
 
+name=$(basename "$0")
+
+usage() {
+    cat << EOF
+Usage: $0 [options]
+
+Options:
+    -f, --force
+            Override the overwriting check.
+    -s, --skip-post
+            Skip the post processing step.
+    -p, --pull
+            Update dotfiles to latest.
+    -d, --dry-run
+            Show what would be done, without making any changes.
+    -h, --help
+            Print this message.
+EOF
+}
+
+short=fspdh
+long=force,skip-post,pull,dry-run,help
+OPTIONS=$(getopt -o $short --long $long -n "$name"  -- "$@")
+
+eval set -- "${OPTIONS}"
+while :; do
+    case "$1" in
+        -f | --force)
+            force="y"
+            ;;
+        -s | --skip-post)
+            skip_post="y"
+            ;;
+        -p | --pull)
+            run_pull="y"
+            ;;
+        -d | --dry-run)
+            dry_run="--dry-run"
+            ;;
+        -h | --help)
+            usage
+            exit 0
+            ;;
+        *)
+            break
+            ;;
+    esac
+    shift
+done
+unset short long OPTIONS
+
 cd "$(dirname "${BASH_SOURCE[0]}")" || return
-git pull
+
+if [ "$run_pull" == "y" ]; then
+    git pull $dry_run
+    if [ "$dry_run" == "" ]; then
+        # git-submodule does not support dry run, just skip
+        git submodule update
+    fi
+fi
 
 function do-it() {
     rsync --exclude ".git" \
@@ -9,17 +67,19 @@ function do-it() {
         --exclude "bootstrap.sh" \
         --exclude "README.md" \
         --exclude "LICENSE" \
-        -avh --no-perms . ~
+        -avh --no-perms $dry_run . ~
 
     # Post processing
-    source "$HOME/.bash_profile"
-    nvim --headless "$HOME/.config/nvim/lua/plugins.lua" \
-        -c 'so' \
-        -c 'autocmd User PackerComplete quitall' \
-        -c 'PackerSync'
+    if [ "$skip_post" != "y" ] && [ "$dry_run" == "" ]; then
+        source "$HOME/.bash_profile"
+        nvim --headless "$HOME/.config/nvim/lua/plugins.lua" \
+            -c 'so' \
+            -c 'autocmd User PackerComplete quitall' \
+            -c 'PackerSync'
+    fi
 }
 
-if [ "$1" == "--force" ] || [ "$1" == "-f" ]; then
+if [ "$force" == "y" ]; then
     do-it
 else
     read -p "This may overwrite existing files in your home directory, continue anyway? (y/n) " -rn 1
@@ -29,5 +89,5 @@ else
     fi
 fi
 
-unset do-it
+unset do-it name force skip_post dry_run run_pull
 # vim:ts=4:sts=4

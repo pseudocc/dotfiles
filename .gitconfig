@@ -1,6 +1,6 @@
 # vim:noet:ts=4:sts=4
 [core]
-	editor = vim
+	editor = nvim
 [user]
 	name = pseudoc
 	email = atlas.yu@canonical.com

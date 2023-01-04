@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# vim as default editor
-export EDITOR=vim
+# NeoVim as default editor
+export EDITOR=nvim
 
 # use ibus as our input methods
 export GTK_IM_MODULE=ibus

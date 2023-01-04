@@ -19,7 +19,7 @@ lsp0.ensure_installed {
 lsp0.configure('denols', { single_file_support = true })
 
 local cmp_sel = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp0.defaults.cmp_mappings{
+local cmp_mappings = lsp0.defaults.cmp_mappings {
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_sel),
   ['<C-n>'] = cmp.mapping.select_next_item(cmp_sel),
   ['<C-y>'] = cmp.mapping.confirm { select = true },
@@ -27,14 +27,14 @@ local cmp_mappings = lsp0.defaults.cmp_mappings{
 }
 
 -- disable completion with tab only luasnip jumps
-cmp_mappings['<Tab>'] = cmp.mapping(function (fallback)
+cmp_mappings['<Tab>'] = cmp.mapping(function(fallback)
   if luasnip.jumpable(1) then
     luasnip.jump(1)
   else
     fallback()
   end
 end, { 'i', 's' })
-cmp_mappings['<S-Tab>'] = cmp.mapping(function (fallback)
+cmp_mappings['<S-Tab>'] = cmp.mapping(function(fallback)
   if luasnip.jumpable(-1) then
     luasnip.jump(-1)
   else
@@ -44,7 +44,7 @@ end, { 'i', 's' })
 
 lsp0.setup_nvim_cmp { mapping = cmp_mappings }
 
-local llcfg, sign_iconsicons
+local llcfg, sign_icons
 ok, llcfg = pcall(require, 'lualine.components.diagnostics.config')
 if ok then
   sign_icons = llcfg.symbols.icons
@@ -63,7 +63,7 @@ lsp0.set_preferences {
 
 vim.diagnostic.config { virtual_text = true }
 
-lsp0.on_attach(function (_, bufnr)
+lsp0.on_attach(function(_, bufnr)
   local no_remap = { buffer = bufnr, remap = false }
   local map = vim.keymap
 
@@ -80,3 +80,4 @@ lsp0.on_attach(function (_, bufnr)
 end)
 
 lsp0.setup()
+

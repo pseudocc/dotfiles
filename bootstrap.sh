@@ -61,7 +61,7 @@ if [ "$run_pull" == "y" ]; then
     fi
 fi
 
-function do-it() {
+do-it() {
     if [ "$dry_run" == "" ]; then
         rm -rf "$HOME/.config/nvim/after"
     fi
@@ -97,9 +97,9 @@ function do-it() {
         -avh --no-perms $dry_run . ~
 }
 
-function check-prerequisites() {
-    which rg &> /dev/null || (echo "ripgrep is not installed!" && exit 1)
-    which tree-sitter &> /dev/null || (echo "tree-sitter is not installed!" && exit 1)
+check-prerequisites() {
+    which rg &> /dev/null || echo "[WARN] ripgrep is not installed!" 1>&2
+    which tree-sitter &> /dev/null || echo "[WARN] tree-sitter is not installed!" 1>&2
 }
 
 if [ "$force" == "y" ]; then

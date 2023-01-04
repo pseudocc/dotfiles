@@ -79,9 +79,15 @@ function do-it() {
     fi
 }
 
+function check-prerequisites() {
+    which rg || echo "ripgrep is not installed!" && exit 1
+    which tree-sitter || echo "tree-sitter is not installed!" && exit 1
+}
+
 if [ "$force" == "y" ]; then
     do-it
 else
+    check-prerequisites
     read -p "This may overwrite existing files in your home directory, continue anyway? (y/n) " -rn 1
     echo ""
     if [[ "$REPLY" =~ ^[Yy]$ ]]; then

@@ -83,6 +83,7 @@ return require('packer').startup(function (use)
             end
           end
         },
+        indent = { enable = true },
         playground = {
           enable = true,
           keybindings = {

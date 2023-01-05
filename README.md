@@ -6,7 +6,16 @@ which is indeed a great repo.
 
 The dotfiles that are stored here are suppose to serve for Linux.
 
+## Appearance
+
+My favorite terminal [Tabby](https://github.com/eugeny/tabby).
+
+Install a [Nerd fonts](https://www.nerdfonts.com/font-downloads),
+I am using the "CaskaydiaCove Nerd Font".
+
 ## Prerequisites
+
+To get the best performace, install the followings.
 
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 

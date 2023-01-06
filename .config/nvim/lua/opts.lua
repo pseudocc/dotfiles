@@ -13,6 +13,7 @@ opt.mouse = ''
 opt.guicursor = ''
 opt.termguicolors = true
 
+opt.swapfile = false
 opt.modeline = true
 opt.cursorline = true
 

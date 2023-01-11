@@ -10,7 +10,7 @@
 [url "git+ssh://pseudoc@git.launchpad.net/"]
 	insteadof = lp:
 [init]
-	defaultBranch = atlas
+	defaultBranch = main
 [gpg]
 	program = gpg2
 [commit]

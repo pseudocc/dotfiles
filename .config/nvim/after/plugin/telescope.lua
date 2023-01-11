@@ -1,3 +1,4 @@
+local core = require 'telescope'
 local builtin = require 'telescope.builtin'
 local wrap = require('utils').wrap
 
@@ -13,3 +14,8 @@ map.set('n', '<leader><C-s>', wrap(
     builtin.grep_string { search = value }
   end
 ), no_remap)
+
+
+core.load_extension 'git_worktree'
+local wt = require('telescope').extensions.git_worktree
+map.set('n', '<leader><C-g>', wt.git_worktrees, no_remap)

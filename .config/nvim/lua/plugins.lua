@@ -11,6 +11,14 @@ return require('packer').startup(function (use)
     requires = { 'nvim-lua/plenary.nvim' }
   }
 
+  use {
+    'ThePrimeagen/git-worktree.nvim',
+    requires = { 'nvim-telescope/telescope.nvim' },
+    config = function ()
+      require('git-worktree').setup {}
+    end
+  }
+
   -- Status line
   use {
     'nvim-lualine/lualine.nvim',

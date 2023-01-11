@@ -3,8 +3,9 @@ local wrap = require('utils').wrap
 
 local no_remap = { remap = false }
 
--- most import remaps
+-- most important remaps
 map.set('i', '<S-Tab>', [[<C-V><Tab>]])
+map.set({ 'n', 'v' }, '<leader>D', [["_d]], no_remap)
 
 -- move lines up/down or character left/right
 map.set('n', '<M-k>', [[:m .-2<CR>==]], no_remap)
@@ -19,7 +20,7 @@ map.set('v', '<M-k>', [[:m '<-2<CR>gv=gv]], no_remap)
 map.set('v', '<M-j>', [[:m '>+1<CR>gv=gv]], no_remap)
 
 -- misc
-map.set("n", "<leader>f", vim.lsp.buf.format, no_remap)
+map.set('n', '<leader>f', vim.lsp.buf.format, no_remap)
 map.set('n', '<leader>W', [[:w !sudo tee % > /dev/null<CR>]], no_remap)
 
 -- buffer navigations

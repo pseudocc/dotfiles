@@ -7,6 +7,10 @@ local no_remap = { remap = false }
 map.set('i', '<S-Tab>', [[<C-V><Tab>]])
 map.set({ 'n', 'v' }, '<leader>D', [["_d]], no_remap)
 
+-- vertical movements
+map.set('n', '<C-U>', [[<C-U>zz]], no_remap)
+map.set('n', '<C-D>', [[<C-D>zz]], no_remap)
+
 -- move lines up/down or character left/right
 map.set('n', '<M-k>', [[:m .-2<CR>==]], no_remap)
 map.set('n', '<M-j>', [[:m .+1<CR>==]], no_remap)

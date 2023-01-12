@@ -1,6 +1,6 @@
 [submodule ".bash-git-prompt"]
 	path = .bash-git-prompt
-	url = git@github.com:pseudocc/bash-git-prompt.git
+	url = https://github.com/pseudocc/bash-git-prompt
 [submodule "packer.nvim"]
 	path = .local/share/nvim/site/pack/packer/start/packer.nvim
 	url = https://github.com/wbthomason/packer.nvim

@@ -17,5 +17,7 @@
 	gpgSign = true
 [alias]
 	lol = log --oneline
+	root = rev-parse --show-toplevel
+	exec = "!exec "
 [pull]
 	rebase = true

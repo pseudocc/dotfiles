@@ -19,11 +19,25 @@ To get the best performace, install the followings.
 
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 
+```bash
+sudo apt install ripgrep
+```
+
 - [tree-sitter](https://github.com/tree-sitter/tree-sitter)
 
 ```bash
-sudo apt install ripgrep
 cargo install tree-sitter-cli
+```
+
+- [npm](https://github.com/npm/cli)
+
+```bash
+sudo apt install npm
+# recommands: also update node to lts
+sudo npm install -g n
+sudo n lts
+# then update npm to latest
+sudo npm install -g npm@latest
 ```
 
 ## Install

@@ -241,7 +241,7 @@ return require('packer').startup(function (use)
       { 'hrsh7th/cmp-nvim-lua' },
       -- Snippets
       { 'L3MON4D3/LuaSnip' },
-      { 'rafamadriz/friendly-snippets' },
+      { 'pseudocc/friendly-snippets' },
     }
     -- Configured in after/plugin/lsp0.lua
   }

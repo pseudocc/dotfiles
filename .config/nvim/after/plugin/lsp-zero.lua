@@ -22,8 +22,10 @@ local cmp_sel = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp0.defaults.cmp_mappings {
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_sel),
   ['<C-n>'] = cmp.mapping.select_next_item(cmp_sel),
+  ['<C-e>'] = cmp.mapping.abort(),
   ['<C-y>'] = cmp.mapping.confirm { select = true },
-  ["<C-Space>"] = cmp.mapping.complete()
+  ['<C-Space>'] = cmp.mapping.complete(),
+  ['<CR>'] = vim.NIL,
 }
 
 -- disable completion with tab only luasnip jumps

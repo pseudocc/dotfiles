@@ -6,6 +6,7 @@ local no_remap = { remap = false }
 -- most important remaps
 map.set('i', '<S-Tab>', [[<C-V><Tab>]])
 map.set({ 'n', 'v' }, '<leader>D', [["_d]], no_remap)
+map.set({ 'n', 'v' }, '<leader>P', [["_dP]], no_remap)
 
 -- vertical movements
 map.set('n', '<C-U>', [[<C-U>zz]], no_remap)

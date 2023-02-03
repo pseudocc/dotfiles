@@ -24,6 +24,9 @@ map.set('i', '<M-h>', [[<Esc>"9x"9phi]], no_remap)
 map.set('v', '<M-k>', [[:m '<-2<CR>gv=gv]], no_remap)
 map.set('v', '<M-j>', [[:m '>+1<CR>gv=gv]], no_remap)
 
+-- join lines
+map.set('n', 'J', [[m9J`9]], no_remap)
+
 -- misc
 map.set('n', '<leader>f', vim.lsp.buf.format, no_remap)
 map.set('n', '<leader>W', [[:w !sudo tee % > /dev/null<CR>]], no_remap)

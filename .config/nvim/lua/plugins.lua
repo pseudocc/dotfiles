@@ -219,7 +219,7 @@ return require('packer').startup(function (use)
         show_first_indent_level = false,
         show_current_context = true,
         context_char = '┃',
-        context_char_blankline = '┃'
+        context_char_blankline = '┃',
       }
     end
   }

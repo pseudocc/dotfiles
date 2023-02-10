@@ -33,7 +33,7 @@ inoremap <Esc>[1;5A <Esc>:m .-2<CR>==gi
 inoremap <Esc>[1;5B <Esc>:m .+1<CR>==gi
 inoremap <Esc>[1;5C <Esc>lxpi
 inoremap <Esc>[1;5D <Esc>xphi
-12345
+
 vnoremap <Esc>[1;5A :m '<-2<CR>gv=gv
 vnoremap <Esc>[1;5B :m '>+1<CR>gv=gv
 

@@ -3,6 +3,9 @@ local wrap = require('utils').wrap
 
 local no_remap = { remap = false }
 
+-- toggle relative number
+map.set('n', '<leader>tr', [[:set rnu!<CR>]], no_remap)
+
 -- most important remaps
 map.set('i', '<S-Tab>', [[<C-V><Tab>]])
 map.set({ 'n', 'v' }, '<leader>D', [["_d]], no_remap)

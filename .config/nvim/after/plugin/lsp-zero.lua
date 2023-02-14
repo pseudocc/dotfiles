@@ -8,7 +8,7 @@ local luasnip = require 'luasnip'
 
 lsp0.preset 'recommended'
 lsp0.ensure_installed {
-  'sumneko_lua',
+  'lua_ls',
   'rust_analyzer',
   'denols',
   'clangd',

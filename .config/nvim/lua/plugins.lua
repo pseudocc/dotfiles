@@ -160,7 +160,7 @@ return require('packer').startup(function (use)
           map('n', '<leader>hd', gs.diffthis)
 
           -- Motion
-          map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+          map({'o', 'x'}, 'ih', [[:<C-U>Gitsigns select_hunk<CR>]])
         end
       }
     end

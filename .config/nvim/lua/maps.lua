@@ -1,5 +1,4 @@
 local map = vim.keymap
-local wrap = require('utils').wrap
 
 local no_remap = { remap = false }
 

@@ -249,4 +249,5 @@ return require('packer').startup(function (use)
   -- Useful tools
   use 'ntpeters/vim-better-whitespace'
   use 'pseudocc/nvim-apm'
+  use 'pseudocc/nvim-pseudoc'
 end)

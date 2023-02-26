@@ -69,17 +69,16 @@ lsp0.on_attach(function(_, bufnr)
   local no_remap = { buffer = bufnr, remap = false }
   local map = vim.keymap
 
-  map.set("n", "gd", vim.lsp.buf.definition, no_remap)
-  map.set("n", "K", vim.lsp.buf.hover, no_remap)
-  map.set("n", "<leader>ws", vim.lsp.buf.workspace_symbol, no_remap)
-  map.set("n", "<leader>d", vim.diagnostic.open_float, no_remap)
-  map.set("n", "[d", vim.diagnostic.goto_prev, no_remap)
-  map.set("n", "]d", vim.diagnostic.goto_next, no_remap)
-  map.set("n", "<leader>ca", vim.lsp.buf.code_action, no_remap)
-  map.set("n", "<leader>rf", vim.lsp.buf.references, no_remap)
-  map.set("n", "<leader>rn", vim.lsp.buf.rename, no_remap)
-  map.set("i", "<C-h>", vim.lsp.buf.signature_help, no_remap)
+  map.set('n', 'gd', vim.lsp.buf.definition, no_remap)
+  map.set('n', 'K', vim.lsp.buf.hover, no_remap)
+  map.set('n', '<leader>ws', vim.lsp.buf.workspace_symbol, no_remap)
+  map.set('n', '<leader>d', vim.diagnostic.open_float, no_remap)
+  map.set('n', '[d', vim.diagnostic.goto_prev, no_remap)
+  map.set('n', ']d', vim.diagnostic.goto_next, no_remap)
+  map.set('n', '<leader>ca', vim.lsp.buf.code_action, no_remap)
+  map.set('n', '<leader>rf', vim.lsp.buf.references, no_remap)
+  map.set('n', '<leader>rn', vim.lsp.buf.rename, no_remap)
+  map.set('i', '<C-h>', vim.lsp.buf.signature_help, no_remap)
 end)
 
 lsp0.setup()
-

@@ -250,4 +250,34 @@ return require('packer').startup(function (use)
   use 'ntpeters/vim-better-whitespace'
   use 'pseudocc/nvim-apm'
   use 'pseudocc/nvim-pseudoc'
+
+  -- DAP
+  use 'nvim-telescope/telescope-dap.nvim'
+
+  use {
+    'theHamsta/nvim-dap-virtual-text',
+    config = function ()
+      require('nvim-dap-virtual-text').setup()
+    end
+  }
+
+  use {
+    'rcarriga/nvim-dap-ui',
+    requires = {
+      'mfussenegger/nvim-dap',
+    },
+    config = function ()
+      local dap, dapui = require('dap'), require('dapui')
+      dap.listeners.after.event_initialized['dapui_config'] = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated['dapui_config'] = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited['dapui_config'] = function()
+        dapui.close()
+      end
+      require('dapui').setup()
+    end
+  }
 end)

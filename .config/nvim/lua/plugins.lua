@@ -250,10 +250,16 @@ return require('packer').startup(function (use)
   use 'ntpeters/vim-better-whitespace'
   use 'pseudocc/nvim-apm'
   use 'pseudocc/nvim-pseudoc'
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
 
   -- DAP
   use 'nvim-telescope/telescope-dap.nvim'
-
+  use 'simrat39/rust-tools.nvim'
   use {
     'theHamsta/nvim-dap-virtual-text',
     config = function ()

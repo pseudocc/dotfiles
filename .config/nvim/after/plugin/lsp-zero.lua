@@ -9,7 +9,6 @@ local luasnip = require 'luasnip'
 lsp0.preset 'recommended'
 lsp0.ensure_installed {
   'lua_ls',
-  'rust_analyzer',
   'denols',
   'clangd',
   'bashls',
@@ -65,20 +64,6 @@ lsp0.set_preferences {
 
 vim.diagnostic.config { virtual_text = true }
 
-lsp0.on_attach(function(_, bufnr)
-  local no_remap = { buffer = bufnr, remap = false }
-  local map = vim.keymap
-
-  map.set('n', 'gd', vim.lsp.buf.definition, no_remap)
-  map.set('n', 'K', vim.lsp.buf.hover, no_remap)
-  map.set('n', '<leader>ws', vim.lsp.buf.workspace_symbol, no_remap)
-  map.set('n', '<leader>d', vim.diagnostic.open_float, no_remap)
-  map.set('n', '[d', vim.diagnostic.goto_prev, no_remap)
-  map.set('n', ']d', vim.diagnostic.goto_next, no_remap)
-  map.set('n', '<leader>ca', vim.lsp.buf.code_action, no_remap)
-  map.set('n', '<leader>rf', vim.lsp.buf.references, no_remap)
-  map.set('n', '<leader>rn', vim.lsp.buf.rename, no_remap)
-  map.set('i', '<C-h>', vim.lsp.buf.signature_help, no_remap)
-end)
+lsp0.on_attach(require('maps').lsp_attach)
 
 lsp0.setup()

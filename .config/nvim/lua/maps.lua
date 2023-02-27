@@ -37,3 +37,22 @@ map.set('n', '<leader>W', [[:w !sudo tee % > /dev/null<CR>]], no_remap)
 map.set('n', '<leader>[', vim.cmd.bprevious, no_remap)
 map.set('n', '<leader>]', vim.cmd.bnext, no_remap)
 map.set('n', '<leader><leader>', vim.cmd.ball, no_remap)
+
+local M = {}
+
+function M.lsp_attach(_, bufnr)
+  local opts = { buffer = bufnr, remap = false }
+
+  map.set('n', 'gd', vim.lsp.buf.definition, opts)
+  map.set('n', 'K', vim.lsp.buf.hover, opts)
+  map.set('n', '<leader>ws', vim.lsp.buf.workspace_symbol, opts)
+  map.set('n', '<leader>d', vim.diagnostic.open_float, opts)
+  map.set('n', '[d', vim.diagnostic.goto_prev, opts)
+  map.set('n', ']d', vim.diagnostic.goto_next, opts)
+  map.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+  map.set('n', '<leader>rf', vim.lsp.buf.references, opts)
+  map.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+  map.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
+end
+
+return M

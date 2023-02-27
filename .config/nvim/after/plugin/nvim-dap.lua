@@ -8,6 +8,7 @@ sign_define('DapBreakpointRejected', { text='', texthl='Warning' })
 
 ---@diagnostic disable-next-line: lowercase-global
 dap = require 'dap'
+local dapui = require 'dapui'
 
 dap.adapters.python = {
   type = 'executable';
@@ -36,3 +37,5 @@ map.set('n', '<leader>dl', dap.run_last, opts)
 map.set({'n', 'v'}, '<leader>dh', widgets.hover, opts)
 map.set({'n', 'v'}, '<leader>dp', widgets.preview, opts)
 map.set('n', '<leader>df', wrap(widgets.centered_float, widgets.frames), opts)
+map.set('n', '<leader>dT', dap.terminate, opts)
+map.set('n', '<leader>dt', dapui.toggle, opts)

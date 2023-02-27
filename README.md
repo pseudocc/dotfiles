@@ -54,3 +54,18 @@ then run the `bootstrap.sh`.
 ```bash
 source dotfiles/bootstrap.sh
 ```
+
+## Nvim-dap
+
+I do not find a way to fully automate this process,
+I would like to write down some steps need manual interactions:
+
+Open NeoVim, run `:Mason` open DAP page, and install the following ones:
+
+- codelldb
+
+Before start debugging, run command like `nvim_dap rust` to generate
+the dap configuration template, edit the file if needed and source
+the file(`:so .nvim-dap.lua`).
+
+Strike `<leader><C-d>` to start debugging.

@@ -64,6 +64,12 @@ Open NeoVim, run `:Mason` open DAP page, and install the following ones:
 
 - codelldb
 
+Open you terminal and install debugpy:
+
+```sh
+pip install debugpy
+```
+
 Before start debugging, run command like `nvim_dap rust` to generate
 the dap configuration template, edit the file if needed and source
 the file(`:so .nvim-dap.lua`).

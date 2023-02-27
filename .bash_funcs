@@ -6,7 +6,7 @@ nvim_dap() {
     fi
 
     case "$1" in
-        ("rust"|"c")
+        ("rust"|"c"|"python")
             cp "$HOME/.config/nvim/dap-conf/$1.lua" .nvim-dap.lua
             ;;
         ("cpp"|"cc")

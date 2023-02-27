@@ -8,6 +8,13 @@ sign_define('DapBreakpointRejected', { text='', texthl='Warning' })
 
 ---@diagnostic disable-next-line: lowercase-global
 dap = require 'dap'
+
+dap.adapters.python = {
+  type = 'executable';
+  command = 'python',
+  args = { '-m', 'debugpy.adapter' };
+}
+
 local map = vim.keymap
 local wrap = require('utils').wrap
 local opts = { remap = false, silent = true }

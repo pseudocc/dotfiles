@@ -12,7 +12,7 @@ else
     PS1='\u@\h:\w\$ '
 fi
 
-for file in $HOME/.{path,bash_aliases,bash_prompt,exports,misc}; do
+for file in $HOME/.{path,bash_funcs,bash_aliases,bash_prompt,exports,misc}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 for file in $HOME/.bash_completion.d/*.sh; do

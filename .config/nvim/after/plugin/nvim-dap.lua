@@ -16,6 +16,26 @@ dap.adapters.python = {
   args = { '-m', 'debugpy.adapter' };
 }
 
+local mason = require('mason-registry').get_package
+local ok, bashda = pcall(mason, 'bash-debug-adapter')
+if not ok then
+  print('not found', bashda)
+else
+  local bashda_path = bashda:get_install_path()
+  local bashdb_libpath = bashda_path .. '/extension/bashdb_dir'
+  local bashdb_path = bashdb_libpath .. '/bashdb'
+
+  dap.adapters.bashdb = {
+    type = 'executable',
+    command = bashda_path .. '/bash-debug-adapter',
+    name = 'bashdb',
+    runtime = {
+      lib_path = bashdb_libpath,
+      path = bashdb_path,
+    },
+  }
+end
+
 local map = vim.keymap
 local wrap = require('utils').wrap
 local opts = { remap = false, silent = true }

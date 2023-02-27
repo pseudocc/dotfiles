@@ -22,5 +22,5 @@ map.set('n', '<leader><C-g>', wt.git_worktrees, no_remap)
 
 core.load_extension 'dap'
 local dap = core.extensions.dap
-map.set('n', '<leader><C-d>', dap.commands, no_remap)
+map.set('n', '<leader><C-d>', dap.configurations, no_remap)
 map.set('n', '<leader><C-b>', dap.list_breakpoints, no_remap)

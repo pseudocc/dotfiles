@@ -63,6 +63,7 @@ I would like to write down some steps need manual interactions:
 Open NeoVim, run `:Mason` open DAP page, and install the following ones:
 
 - codelldb
+- bash-debug-adapter
 
 Open you terminal and install debugpy:
 

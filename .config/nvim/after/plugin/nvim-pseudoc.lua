@@ -1,7 +1,4 @@
-local opts = {
-  remap = false,
-  silent = true,
-}
+local opts = { remap = false, silent = true }
 
 vim.keymap.set({ 'o', 'x' }, 'ic',
   [[:<C-u>lua require('pseudoc.motions').select_context(false)<CR>]], opts)

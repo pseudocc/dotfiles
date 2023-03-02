@@ -14,7 +14,7 @@ rt.setup {
   server = {
     on_attach = function(_, bufnr)
       local map = vim.keymap
-      local opts = { buffer = bufnr, remap = false }
+      local opts = { buffer = bufnr, remap = false, silent = true }
 
       -- Common key maps on attach
       require('maps').lsp_attach(_, bufnr)

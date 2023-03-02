@@ -1,47 +1,47 @@
 local map = vim.keymap
 
-local no_remap = { remap = false }
+local opts = { silent = true, remap = false }
 
 -- toggle relative number
-map.set('n', '<leader>tr', [[:set rnu!<CR>]], no_remap)
+map.set('n', '<leader>tr', [[:set rnu!<CR>]], opts)
 
 -- most important remaps
 map.set('i', '<S-Tab>', [[<C-V><Tab>]])
-map.set({ 'n', 'v' }, '<leader>D', [["_d]], no_remap)
-map.set({ 'n', 'v' }, '<leader>P', [["_dP]], no_remap)
+map.set({ 'n', 'v' }, '<leader>D', [["_d]], opts)
+map.set({ 'n', 'v' }, '<leader>P', [["_dP]], opts)
 
 -- vertical movements
-map.set('n', '<C-U>', [[<C-U>zz]], no_remap)
-map.set('n', '<C-D>', [[<C-D>zz]], no_remap)
+map.set('n', '<C-U>', [[<C-U>zz]], opts)
+map.set('n', '<C-D>', [[<C-D>zz]], opts)
 
 -- move lines up/down or character left/right
-map.set('n', '<M-k>', [[:m .-2<CR>==]], no_remap)
-map.set('n', '<M-j>', [[:m .+1<CR>==]], no_remap)
-map.set('n', '<M-l>', [["9x"9p]], no_remap)
-map.set('n', '<M-h>', [[h"9x"9ph]], no_remap)
-map.set('i', '<M-k>', [[<Esc>:m .-2<CR>==gi]], no_remap)
-map.set('i', '<M-j>', [[<Esc>:m .+1<CR>==gi]], no_remap)
-map.set('i', '<M-l>', [[<Esc>l"9x"9pi]], no_remap)
-map.set('i', '<M-h>', [[<Esc>"9x"9phi]], no_remap)
-map.set('v', '<M-k>', [[:m '<-2<CR>gv=gv]], no_remap)
-map.set('v', '<M-j>', [[:m '>+1<CR>gv=gv]], no_remap)
+map.set('n', '<M-k>', [[:m .-2<CR>==]], opts)
+map.set('n', '<M-j>', [[:m .+1<CR>==]], opts)
+map.set('n', '<M-l>', [["9x"9p]], opts)
+map.set('n', '<M-h>', [[h"9x"9ph]], opts)
+map.set('i', '<M-k>', [[<Esc>:m .-2<CR>==gi]], opts)
+map.set('i', '<M-j>', [[<Esc>:m .+1<CR>==gi]], opts)
+map.set('i', '<M-l>', [[<Esc>l"9x"9pi]], opts)
+map.set('i', '<M-h>', [[<Esc>"9x"9phi]], opts)
+map.set('v', '<M-k>', [[:m '<-2<CR>gv=gv]], opts)
+map.set('v', '<M-j>', [[:m '>+1<CR>gv=gv]], opts)
 
 -- join lines
-map.set('n', 'J', [[m9J`9]], no_remap)
+map.set('n', 'J', [[m9J`9]], opts)
 
 -- misc
-map.set('n', '<leader>f', vim.lsp.buf.format, no_remap)
-map.set('n', '<leader>W', [[:w !sudo tee % > /dev/null<CR>]], no_remap)
+map.set('n', '<leader>f', vim.lsp.buf.format, opts)
+map.set('n', '<leader>W', [[:w !sudo tee % > /dev/null<CR>]], opts)
 
 -- buffer navigations
-map.set('n', '<leader>[', vim.cmd.bprevious, no_remap)
-map.set('n', '<leader>]', vim.cmd.bnext, no_remap)
-map.set('n', '<leader><leader>', vim.cmd.ball, no_remap)
+map.set('n', '<leader>[', vim.cmd.bprevious, opts)
+map.set('n', '<leader>]', vim.cmd.bnext, opts)
+map.set('n', '<leader><leader>', vim.cmd.ball, opts)
 
 local M = {}
 
 function M.lsp_attach(_, bufnr)
-  local opts = { buffer = bufnr, remap = false }
+  local opts = { buffer = bufnr, remap = false, silent = true }
 
   map.set('n', 'gd', vim.lsp.buf.definition, opts)
   map.set('n', 'K', vim.lsp.buf.hover, opts)

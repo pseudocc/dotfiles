@@ -1,4 +1,4 @@
 local map = vim.keymap
-local no_remap = { remap = false }
+local opts = { remap = false, silent = true }
 
-map.set('n', '<leader>z', vim.cmd.NvimApmToggle, no_remap)
+map.set('n', '<leader>z', vim.cmd.NvimApmToggle, opts)

@@ -1,5 +1,5 @@
 local map = vim.keymap
-local no_remap = { remap = false }
+local opts = { remap = false, silent = true }
 
 local function open_nvim_tree(data)
   -- buffer is a directory
@@ -18,7 +18,7 @@ end
 
 vim.api.nvim_create_autocmd({ 'VimEnter' }, { callback = open_nvim_tree })
 
-map.set('n', '<C-b>', vim.cmd.NvimTreeToggle, no_remap)
-map.set('n', '<leader>n', vim.cmd.NvimTreeFocus, no_remap)
-map.set('n', '<C-f>', vim.cmd.NvimTreeFindFile, no_remap)
+map.set('n', '<C-b>', vim.cmd.NvimTreeToggle, opts)
+map.set('n', '<leader>n', vim.cmd.NvimTreeFocus, opts)
+map.set('n', '<C-f>', vim.cmd.NvimTreeFindFile, opts)
 

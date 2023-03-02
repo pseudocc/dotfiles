@@ -130,7 +130,7 @@ return require('packer').startup(function (use)
           local gs = package.loaded.gitsigns
 
           local function map(mode, l, r, opts)
-            opts = opts or { remap = false }
+            opts = opts or { silent = true, remap = false }
             opts.buffer = bufnr
             vim.keymap.set(mode, l, r, opts)
           end

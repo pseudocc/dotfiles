@@ -256,6 +256,10 @@ return require('packer').startup(function (use)
       require('Comment').setup()
     end
   }
+  use {
+    'ThePrimeagen/harpoon',
+    requires = { 'nvim-telescope/telescope.nvim' },
+  }
 
   -- DAP
   use 'nvim-telescope/telescope-dap.nvim'

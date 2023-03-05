@@ -30,6 +30,6 @@ map('n', '<leader><C-h>', [[:Telescope harpoon marks<CR>]])
 
 harpoon.setup {
   global_settings = {
-    enter_on_sendcmd = false,
+    enter_on_sendcmd = true,
   },
 }

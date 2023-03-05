@@ -4,6 +4,7 @@ local harpoon = require 'harpoon'
 local mark = require 'harpoon.mark'
 
 local ui = require 'harpoon.ui'
+local cui = require 'harpoon.cmd-ui'
 local term = require 'harpoon.term'
 
 local function map(mode, l, r, opts)
@@ -22,6 +23,7 @@ for i = 1, 9 do
   map('n', '<leader>t' .. tostring(i), wrap(term.gotoTerminal, i))
 end
 
+map('n', '<leader>~', cui.toggle_quick_menu)
 local telescope = require 'telescope'
 telescope.load_extension('harpoon')
 map('n', '<leader><C-h>', [[:Telescope harpoon marks<CR>]])

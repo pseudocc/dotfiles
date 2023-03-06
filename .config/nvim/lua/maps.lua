@@ -32,6 +32,7 @@ map.set('n', 'J', [[m9J`9]], opts)
 -- misc
 map.set('n', '<leader>f', vim.lsp.buf.format, opts)
 map.set('n', '<leader>W', [[:w !sudo tee % > /dev/null<CR>]], opts)
+map.set('t', '<C-D>', [[<C-\><C-N>]], opts)
 
 -- buffer navigations
 map.set('n', '<leader>[', vim.cmd.bprevious, opts)
@@ -41,6 +42,7 @@ map.set('n', '<leader><leader>', vim.cmd.ball, opts)
 local M = {}
 
 function M.lsp_attach(_, bufnr)
+  ---@diagnostic disable-next-line: redefined-local
   local opts = { buffer = bufnr, remap = false, silent = true }
 
   map.set('n', 'gd', vim.lsp.buf.definition, opts)

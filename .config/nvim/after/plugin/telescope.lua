@@ -6,6 +6,7 @@ local map = vim.keymap
 local opts = { remap = false, silent = true }
 
 map.set('n', '<C-p>', builtin.git_files, opts)
+map.set('n', '<C-s>', builtin.live_grep, opts)
 map.set('n', '<leader><C-p>', builtin.find_files, opts)
 map.set('n', '<leader><C-s>', wrap(
   vim.ui.input,

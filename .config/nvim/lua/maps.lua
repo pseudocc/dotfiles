@@ -7,8 +7,8 @@ map.set('n', '<leader>tr', [[:set rnu!<CR>]], opts)
 
 -- most important remaps
 map.set('i', '<S-Tab>', [[<C-V><Tab>]])
-map.set({ 'n', 'v' }, '<leader>D', [["_d]], opts)
-map.set({ 'n', 'v' }, '<leader>P', [["_dP]], opts)
+map.set('v', '<leader>D', [["_d]], opts)
+map.set('v', '<leader>P', [["_dP]], opts)
 
 -- vertical movements
 map.set('n', '<C-U>', [[<C-U>zz]], opts)
@@ -37,7 +37,6 @@ map.set('t', '<C-D>', [[<C-\><C-N>]], opts)
 -- buffer navigations
 map.set('n', '<leader>[', vim.cmd.bprevious, opts)
 map.set('n', '<leader>]', vim.cmd.bnext, opts)
-map.set('n', '<leader><leader>', vim.cmd.ball, opts)
 
 local M = {}
 

@@ -116,7 +116,7 @@ return require('packer').startup(function (use)
     'ThePrimeagen/git-worktree.nvim',
     requires = { 'nvim-telescope/telescope.nvim' },
     config = function ()
-      require('git-worktree').setup {}
+      require('git-worktree').setup()
     end
   }
 
@@ -139,7 +139,7 @@ return require('packer').startup(function (use)
             if vim.wo.diff then
               return '[c'
             end
-            vim.schedule(gs.next_hunk)
+            vim.schedule(gs.prev_hunk)
             return '<Ignore>'
           end, { expr = true })
 
@@ -178,7 +178,7 @@ return require('packer').startup(function (use)
   use {
     'kylechui/nvim-surround',
     config = function ()
-      require('nvim-surround').setup {}
+      require('nvim-surround').setup()
     end
   }
 

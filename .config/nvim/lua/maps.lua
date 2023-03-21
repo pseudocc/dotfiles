@@ -35,8 +35,8 @@ map.set('n', '<leader>W', [[:w !sudo tee % > /dev/null<CR>]], opts)
 map.set('t', '<C-D>', [[<C-\><C-N>]], opts)
 
 -- buffer navigations
-map.set('n', '<leader>[', vim.cmd.bprevious, opts)
-map.set('n', '<leader>]', vim.cmd.bnext, opts)
+map.set('n', '[b', vim.cmd.bprevious, opts)
+map.set('n', ']b', vim.cmd.bnext, opts)
 
 local M = {}
 

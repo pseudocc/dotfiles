@@ -95,6 +95,8 @@ do-it() {
         --exclude "README.md" \
         --exclude "LICENSE" \
         -avh --no-perms $dry_run . ~
+
+    fc-cache -f -v
 }
 
 check-prerequisites() {

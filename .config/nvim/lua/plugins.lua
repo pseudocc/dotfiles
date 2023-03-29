@@ -252,13 +252,20 @@ return require('packer').startup(function (use)
   use 'pseudocc/nvim-pseudoc'
   use {
     'numToStr/Comment.nvim',
-    config = function()
+    config = function ()
       require('Comment').setup()
     end
   }
   use {
     'ThePrimeagen/harpoon',
     requires = { 'nvim-telescope/telescope.nvim' },
+  }
+  use {
+    'folke/todo-comments.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function ()
+      require('todo-comments').setup()
+    end
   }
 
   -- DAP

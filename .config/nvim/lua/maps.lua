@@ -38,6 +38,9 @@ map.set('t', '<C-D>', [[<C-\><C-N>]], opts)
 map.set('n', '[b', vim.cmd.bprevious, opts)
 map.set('n', ']b', vim.cmd.bnext, opts)
 
+-- alternate file
+map.set('n', '\b', [[<C-^>]], opts)
+
 local M = {}
 
 function M.lsp_attach(_, bufnr)

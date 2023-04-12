@@ -62,8 +62,17 @@ lsp0.set_preferences {
   sign_icons = sign_icons
 }
 
-vim.diagnostic.config { virtual_text = true }
-
 lsp0.on_attach(require('maps').lsp_attach)
 
 lsp0.setup()
+
+local dconfig = { virtual_text = false }
+vim.diagnostic.config(dconfig)
+
+local function toggle_virtual_text()
+  dconfig.virtual_text = not dconfig.virtual_text
+  vim.diagnostic.config(dconfig)
+end
+
+vim.keymap.set('n', '<leader>vt', toggle_virtual_text,
+  { noremap = true, silent = true })

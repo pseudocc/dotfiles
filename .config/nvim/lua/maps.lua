@@ -39,7 +39,7 @@ map.set('n', '[b', vim.cmd.bprevious, opts)
 map.set('n', ']b', vim.cmd.bnext, opts)
 
 -- alternate file
-map.set('n', '\b', [[<C-^>]], opts)
+map.set('n', '<M-b>', [[<C-^>]], opts)
 
 local M = {}
 

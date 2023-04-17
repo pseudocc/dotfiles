@@ -11,5 +11,10 @@ config.pxu = {
   filetype = 'pxu',
 }
 
-local ft = parser.filetype_to_parsername
-ft.pxu = 'pxu'
+-- Neovim >= 0.9 new language API
+if vim.treesitter.language.register then
+  vim.treesitter.language.register('pxu', 'pxu')
+else
+  local ft = parser.filetype_to_parsername
+  ft.pxu = 'pxu'
+end

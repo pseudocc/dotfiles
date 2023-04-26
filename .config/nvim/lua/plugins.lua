@@ -248,7 +248,6 @@ return require('packer').startup(function (use)
 
   -- Useful tools
   use 'ntpeters/vim-better-whitespace'
-  use 'github/copilot.vim'
   use 'pseudocc/nvim-apm'
   use 'pseudocc/nvim-pseudoc'
   use {
@@ -266,6 +265,33 @@ return require('packer').startup(function (use)
     requires = 'nvim-lua/plenary.nvim',
     config = function ()
       require('todo-comments').setup()
+    end
+  }
+
+  use {
+    'zbirenbaum/copilot.lua',
+    cmd = 'Copilot',
+    event = 'InsertEnter',
+    config = function ()
+      require('copilot').setup {
+        panel = { enabled = false },
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          debounce = 75,
+          keymap = {
+            accept = '<Tab>',
+            accept_word = '<M-,>',
+            accept_line = '<M-.>',
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<C-]>",
+          }
+        },
+        filetypes = {
+          TelescopePrompt = false,
+        }
+      }
     end
   }
 

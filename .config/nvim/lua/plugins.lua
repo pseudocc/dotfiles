@@ -187,20 +187,41 @@ return require('packer').startup(function (use)
     'nvim-tree/nvim-tree.lua',
     requires = { 'nvim-tree/nvim-web-devicons' },
     config = function ()
-      local disabled = ''
       require('nvim-tree').setup {
         disable_netrw = true,
-        view = {
-          adaptive_size = true,
-          mappings = {
-            list = {
-              { key = 'g?', action = disabled },
-              { key = '<2-RightMouse>', action = disabled },
-              { key = '<2-LeftMouse>', action = disabled },
-              { key = '?', action = 'toggle_help' }
-            }
+        view = { adaptive_size = true },
+        on_attach = function (bufnr)
+          local api = require('nvim-tree.api')
+          local disabled = '';
+
+          local function map(l, r, desc)
+            local opts = { buffer = bufnr }
+            if r ~= disabled then
+              opts.silent = true
+              opts.remap = false
+              if desc then
+                opts.desc = 'nvim-tree: ' .. desc
+              end
+            end
+            vim.keymap.set('n', l, r, opts)
+            if r == disabled then
+              vim.keymap.del('n', l, opts)
+            end
+          end
+
+          api.config.mappings.default_on_attach(bufnr)
+
+          local disabled_keys = {
+            'g?',
+            '<2-RightMouse>',
+            '<2-LeftMouse>',
           }
-        },
+          for _, key in ipairs(disabled_keys) do
+            map(key, disabled)
+          end
+
+          map('?', api.tree.toggle_help, 'Help')
+        end,
         renderer = { group_empty = true }
       }
     end

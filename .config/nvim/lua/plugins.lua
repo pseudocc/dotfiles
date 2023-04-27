@@ -62,7 +62,7 @@ return require('packer').startup(function (use)
           -- script
           'bash', 'lua', 'python', 'vim',
           -- frontend
-          'css', 'html',
+          'css', 'html', 'svelte',
           -- lame
           'typescript',
           -- real geek

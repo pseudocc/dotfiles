@@ -14,6 +14,7 @@ alias scp.nc="scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 alias p="cd ~/projects"
 alias pgh="cd ~/projects/github"
 alias plp="cd ~/projects/lp"
+alias vt="vi +term"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

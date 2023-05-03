@@ -290,18 +290,20 @@ return require('packer').startup(function (use)
   }
 
   use {
-    'zbirenbaum/copilot.lua',
+    'pseudocc/copilot.lua',
     cmd = 'Copilot',
     event = 'InsertEnter',
     config = function ()
-      require('copilot').setup {
+      local copilot = require('copilot')
+
+      copilot.setup {
         panel = { enabled = false },
         suggestion = {
           enabled = true,
           auto_trigger = true,
           debounce = 75,
           keymap = {
-            accept = '<Tab>',
+            accept = false,
             accept_word = '<M-,>',
             accept_line = '<M-.>',
             next = "<M-]>",
@@ -313,6 +315,21 @@ return require('packer').startup(function (use)
           TelescopePrompt = false,
         }
       }
+
+      local keymap_accept = '<Tab>'
+      local keycode = vim.api.nvim_replace_termcodes(keymap_accept, true, false, true)
+      local suggestion = require('copilot.suggestion')
+      local function accept()
+        if not suggestion.is_active() then
+          local buf = vim.api.nvim_get_current_buf()
+          local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+          vim.api.nvim_buf_set_text(buf, row - 1, col, row - 1, col, { keycode })
+          vim.api.nvim_win_set_cursor(0, { row, col + 1 })
+        else
+          return suggestion.accept()
+        end
+      end
+      vim.keymap.set('i', keymap_accept, accept, { remap = false, silent = true })
     end
   }
 

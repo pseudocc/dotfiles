@@ -10,10 +10,6 @@ map.set('i', '<S-Tab>', [[<C-V><Tab>]])
 map.set('v', '<leader>D', [["_d]], opts)
 map.set('v', '<leader>P', [["_dP]], opts)
 
--- vertical movements
-map.set('n', '<C-U>', [[<C-U>zz]], opts)
-map.set('n', '<C-D>', [[<C-D>zz]], opts)
-
 -- move lines up/down or character left/right
 map.set('n', '<M-k>', [[:m .-2<CR>==]], opts)
 map.set('n', '<M-j>', [[:m .+1<CR>==]], opts)

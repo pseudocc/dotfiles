@@ -96,7 +96,7 @@ do-it() {
         --exclude "LICENSE" \
         -avh --no-perms $dry_run . ~
 
-    fc-cache -f -v
+    fc-cache -f
 }
 
 check-prerequisites() {

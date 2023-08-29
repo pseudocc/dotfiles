@@ -1,0 +1,123 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "mod": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "height": 0,
+  "modules-left": [
+    "tray",
+    "clock",
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "network",
+    "pulseaudio",
+    "pulseaudio#microphone",
+    "cpu",
+    "memory",
+    "backlight",
+    "battery"
+  ],
+  "tray": {
+    "spacing": 10
+  },
+  "hyprland/window": {
+    "max-length": 60,
+    "separate-outputs": true
+  },
+  "clock": {
+    "format": "{: %R   %y/%m/%d}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "",
+      "",
+      ""
+    ],
+    "min-length": 6
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "tooltip": false,
+    "format-muted": " Muted",
+    "on-click": "pamixer -t",
+    "on-scroll-up": "pamixer -i 5",
+    "on-scroll-down": "pamixer -d 5",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": " Muted",
+    "on-click": "pamixer --default-source -t",
+    "on-scroll-up": "pamixer --default-source -i 5",
+    "on-scroll-down": "pamixer --default-source -d 5",
+    "scroll-step": 5
+  },
+  "network": {
+    "format": "{ifname}",
+    "format-ethernet": " {ipaddr}/{cidr}",
+    "format-wifi": " {essid} ({signalStrength}%)",
+    "format-disconnected": "busted",
+    "tooltip-format": " {ifname} via {gwaddr}",
+    "tooltip-format-ethernet": " {ifname}",
+    "tooltip-format-wifi": " {essid} ({signalStrength}%)",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+  },
+  "cpu": {
+    "interval": 10,
+    "format": " {}%",
+    "max-length": 10
+  },
+  "memory": {
+    "interval": 10,
+    "format": " {}%",
+    "max-length": 10
+  }
+}

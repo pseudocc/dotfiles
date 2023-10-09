@@ -231,6 +231,7 @@ return require('packer').startup(function (use)
   use {
     'lukas-reineke/indent-blankline.nvim',
     requires = { 'nvim-treesitter/nvim-treesitter' },
+    tag = 'v2.20.8',
     config = function ()
       require('indent_blankline').setup {
         char = '·',

@@ -3,10 +3,10 @@
 # NeoVim as default editor
 export EDITOR='nvim +"set ft=bash"'
 
-# use ibus as our input methods
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
+# use fcitx as our input methods
+export GTK_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export QT_IM_MODULE=fcitx
 
 # debian develop
 export DEBEMAIL="atlas.yu@canonical.com"

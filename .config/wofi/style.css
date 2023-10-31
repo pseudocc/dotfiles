@@ -39,10 +39,6 @@
   background-color: @surface;
 }
 
-#text {
-  color: @text;
-}
-
 #entry {
   background-color: @base;
 }
@@ -52,6 +48,10 @@
   background-color: @rose;
 }
 
+#entry #text {
+  color: @rose;
+}
+
 #entry:selected #text {
-  color: @base;
+  color: @pine;
 }

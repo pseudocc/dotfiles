@@ -314,6 +314,7 @@ return require('packer').startup(function (use)
         },
         filetypes = {
           TelescopePrompt = false,
+          yaml = true,
         }
       }
 

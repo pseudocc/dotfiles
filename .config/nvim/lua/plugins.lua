@@ -66,7 +66,7 @@ return require('packer').startup(function (use)
           -- lame
           'typescript',
           -- real geek
-          'jsdoc', 'javascript',
+          'jsdoc', 'javascript', 'haskell',
           -- build system
           'cmake', 'make',
           -- structured data/schema
@@ -335,6 +335,7 @@ return require('packer').startup(function (use)
   -- DAP
   use 'nvim-telescope/telescope-dap.nvim'
   use 'simrat39/rust-tools.nvim'
+  use 'mrcjkb/haskell-tools.nvim'
   use {
     'theHamsta/nvim-dap-virtual-text',
     config = function ()

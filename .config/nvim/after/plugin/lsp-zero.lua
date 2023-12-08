@@ -14,7 +14,8 @@ lsp0.ensure_installed {
   'tsserver',
   'clangd',
   'bashls',
-  'pyright'
+  'pyright',
+  'hls',
 }
 
 lsp0.configure('denols', {

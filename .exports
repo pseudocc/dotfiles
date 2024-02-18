@@ -13,3 +13,4 @@ export DEBEMAIL="atlas.yu@canonical.com"
 export DEBFULLNAME="Atlas Yu"
 
 export GPG_TTY=$(tty)
+export SSH_NCOPTS="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"

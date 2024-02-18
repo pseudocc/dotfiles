@@ -6,10 +6,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-# ssh short hands
-alias ssh.nc="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
-alias scp.nc="scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
-
 # shortcuts
 alias p="cd ~/projects"
 alias pgh="cd ~/projects/github"

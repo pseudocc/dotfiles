@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
 
+ssh_nc() {
+    local cmd
+    if [ "$TERM" == "xterm-kitty" ]; then
+        cmd="kitten ssh"
+    else
+        cmd="ssh"
+    fi
+	$cmd $SSH_NCOPTS "$@" \
+		2> >(grep -v "^Warning: Permanently added" >&2)
+}
+
+scp_nc() {
+	scp $SSH_NCOPTS "$@" \
+		2> >(grep -v "^Warning: Permanently added" >&2)
+}
+
 nvim_dap() {
     if [ "$1" == "" ]; then
         return

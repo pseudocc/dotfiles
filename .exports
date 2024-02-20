@@ -14,3 +14,4 @@ export DEBFULLNAME="Atlas Yu"
 
 export GPG_TTY=$(tty)
 export SSH_NCOPTS="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+export SSH_NC="ssh_nc"

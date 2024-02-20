@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+hob_ssh() {
+    ssh_nc "u@$1.local"
+}
+
 ssh_nc() {
     local cmd
     if [ "$TERM" == "xterm-kitty" ]; then

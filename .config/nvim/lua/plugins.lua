@@ -280,7 +280,8 @@ return require('packer').startup(function (use)
   }
   use {
     'ThePrimeagen/harpoon',
-    requires = { 'nvim-telescope/telescope.nvim' },
+    branch = "harpoon2",
+    requires = { 'nvim-lua/plenary.nvim' },
   }
   use {
     'folke/todo-comments.nvim',

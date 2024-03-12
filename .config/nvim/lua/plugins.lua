@@ -32,7 +32,7 @@ return require('packer').startup(function (use)
         bold_vert_split = false,
         disable_background = true,
         disable_float_background = true,
-        -- tabby has error rendering italics
+        -- italics makes the font look weird
         disable_italics = true,
         highlight_groups = {
           Whitespace = { fg = 'surface' },

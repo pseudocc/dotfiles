@@ -96,7 +96,8 @@ do-it() {
         --exclude "LICENSE" \
         -avh --no-perms $dry_run . ~
 
-    fc-cache -f
+    fc-cache -r
+    . "$HOME/.bash_profile"
 }
 
 check-prerequisites() {

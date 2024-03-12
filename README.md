@@ -52,7 +52,7 @@ git clone \
 
 then run the `bootstrap.sh`.
 ```bash
-source dotfiles/bootstrap.sh
+bash dotfiles/bootstrap.sh
 ```
 
 ## Nvim-dap

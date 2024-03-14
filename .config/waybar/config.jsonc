@@ -31,16 +31,16 @@
     "separate-outputs": true
   },
   "clock": {
-    "format": "{: %R   %y/%m/%d}",
+    "format": "{:\uf017 %R  \uf133 %y/%m/%d}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon} {percent}%",
     "format-icons": [
-      "",
-      "",
-      ""
+      "\udb80\udcde",
+      "\udb80\udcdf",
+      "\udb80\udce0"
     ],
     "min-length": 6
   },
@@ -51,49 +51,49 @@
       "critical": 20
     },
     "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
+    "format-charging": "\udb80\udc84 {capacity}%",
+    "format-plugged": "\ueb2d {capacity}%",
     "format-alt": "{time} {icon}",
     "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
+      "\udb80\udc8e",
+      "\udb80\udc7a",
+      "\udb80\udc7b",
+      "\udb80\udc7c",
+      "\udb80\udc7d",
+      "\udb80\udc7e",
+      "\udb80\udc7f",
+      "\udb80\udc80",
+      "\udb80\udc81",
+      "\udb80\udc82",
+      "\udb80\udc79"
     ]
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "tooltip": false,
-    "format-muted": " Muted",
+    "format-muted": "\udb81\udf5f Muted",
     "on-click": "pamixer -t",
     "on-scroll-up": "pamixer -i 5",
     "on-scroll-down": "pamixer -d 5",
     "scroll-step": 5,
     "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
+      "headphone": "\udb80\udecb",
+      "hands-free": "\udb80\udecb",
+      "headset": "\udb80\udece",
+      "phone": "\uf095",
+      "portable": "\uf10b",
+      "car": "\uf1b9",
       "default": [
-        "",
-        "",
-        ""
+        "\udb81\udd7f",
+        "\udb81\udd80",
+        "\udb81\udd7e"
       ]
     }
   },
   "pulseaudio#microphone": {
     "format": "{format_source}",
-    "format-source": " {volume}%",
-    "format-source-muted": " Muted",
+    "format-source": "\udb80\udf6c {volume}%",
+    "format-source-muted": "\udb80\udf6d Muted",
     "on-click": "pamixer --default-source -t",
     "on-scroll-up": "pamixer --default-source -i 5",
     "on-scroll-down": "pamixer --default-source -d 5",
@@ -101,23 +101,23 @@
   },
   "network": {
     "format": "{ifname}",
-    "format-ethernet": " {ipaddr}/{cidr}",
-    "format-wifi": " {essid} ({signalStrength}%)",
+    "format-ethernet": "\uf0c1 {ipaddr}/{cidr}",
+    "format-wifi": "\uf1eb {essid} ({signalStrength}%)",
     "format-disconnected": "busted",
-    "tooltip-format": " {ifname} via {gwaddr}",
-    "tooltip-format-ethernet": " {ifname}",
-    "tooltip-format-wifi": " {essid} ({signalStrength}%)",
+    "tooltip-format": "\udb81\udef3 {ifname} via {gwaddr}",
+    "tooltip-format-ethernet": "\uf0c1 {ifname}",
+    "tooltip-format-wifi": "\uf1eb {essid} ({signalStrength}%)",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50
   },
   "cpu": {
     "interval": 10,
-    "format": " {}%",
+    "format": "\uf4bc {}%",
     "max-length": 10
   },
   "memory": {
     "interval": 10,
-    "format": " {}%",
+    "format": "\ue266 {}%",
     "max-length": 10
   }
 }

@@ -334,6 +334,7 @@ return require('packer').startup(function (use)
   }
 
   -- DAP
+  use 'nvim-neotest/nvim-nio'
   use 'nvim-telescope/telescope-dap.nvim'
   use 'simrat39/rust-tools.nvim'
   use 'mrcjkb/haskell-tools.nvim'

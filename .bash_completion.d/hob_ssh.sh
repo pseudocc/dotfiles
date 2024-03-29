@@ -6,8 +6,7 @@ _hob_ssh() {
   cur="${COMP_WORDS[COMP_CWORD]}"
   prev="${COMP_WORDS[COMP_CWORD-1]}"
   mock="${MOCK:-u@mock.local}"
-  ssh="${SSH_NC:-ssh}"
-  opts=$(${ssh} "${mock}" hob_devices)
+  opts=$(ssh "${mock}" hob_devices)
   COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
   return 0
 }

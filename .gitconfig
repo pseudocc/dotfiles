@@ -21,3 +21,8 @@
 	exec = "!exec "
 [pull]
 	rebase = true
+[sendemail]
+	from = Atlas Yu <atlas.yu@canonical.com>
+	smtpServer = /home/catlas/go/bin/sendgmail
+	smtpServerOption = -sender=atlas.yu@canonical.com
+	chainReplyTo = false

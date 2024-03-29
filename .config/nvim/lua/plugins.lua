@@ -60,7 +60,7 @@ return require('packer').startup(function (use)
           -- low level
           'c', 'cpp', 'rust', 'llvm',
           -- script
-          'bash', 'lua', 'python', 'vim',
+          'bash', 'lua', 'python', 'vim', 'vimdoc',
           -- frontend
           'css', 'html', 'svelte',
           -- lame

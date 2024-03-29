@@ -15,7 +15,6 @@ lsp0.ensure_installed {
   'clangd',
   'bashls',
   'pyright',
-  'hls',
 }
 
 lsp0.configure('denols', {

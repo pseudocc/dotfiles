@@ -8,10 +8,10 @@ The dotfiles that are stored here are suppose to serve for Linux.
 
 ## Appearance
 
-My favorite terminal [Tabby](https://github.com/eugeny/tabby).
+My favorite terminal [Kitty](https://github.com/kovidgoyal/kitty).
 
 Install a [Nerd fonts](https://www.nerdfonts.com/font-downloads),
-I am using the "CaskaydiaCove Nerd Font".
+I am using the "GohuFont uni11 Nerd Font Propo".
 
 ## Prerequisites
 
@@ -53,6 +53,7 @@ git clone \
 then run the `bootstrap.sh`.
 ```bash
 bash dotfiles/bootstrap.sh
+source ~/.bash_prompt
 ```
 
 ## Nvim-dap

@@ -4,6 +4,13 @@ return require('packer').startup(function (use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  -- Kitty Pager
+  use {
+    'mikesmithgh/kitty-scrollback.nvim',
+    opt = true,
+    tag = 'v4.3.1',
+  }
+
   -- Fuzzy finder
   use {
     'nvim-telescope/telescope.nvim',

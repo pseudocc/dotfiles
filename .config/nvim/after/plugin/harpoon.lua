@@ -18,7 +18,7 @@ local function list(fname, ...)
   end
 end
 
-map('n', '<leader>ma', list('append'), 'Add file')
+map('n', '<leader>ma', list('add'), 'Add file')
 map('n', '<leader>mr', list('remove'), 'Remove file')
 
 map('n', '<leader>(', list('prev'))

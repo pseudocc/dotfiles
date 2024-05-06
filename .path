@@ -20,6 +20,6 @@ if [ -f "$HOME/.gnupg/env" ]; then
 fi
 
 # ghcup-env
-if [ -f "/home/catlas/.ghcup/env" ]; then
-    source "/home/catlas/.ghcup/env"
+if [ -f "$HOME/.ghcup/env" ]; then
+    source "$HOME/.ghcup/env"
 fi

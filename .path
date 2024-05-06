@@ -23,3 +23,8 @@ fi
 if [ -f "$HOME/.ghcup/env" ]; then
     source "$HOME/.ghcup/env"
 fi
+
+# zig
+if [ -f "$HOME/.zig/env" ]; then
+    source "$HOME/.zig/env"
+fi

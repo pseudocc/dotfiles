@@ -1,0 +1,218 @@
+#!/usr/bin/env bash
+# vim: noet
+
+set -ea
+
+if [ -z "$ZIG_HOME" ]; then
+	>&2 echo "Environment variable ZIG_HOME is not set"
+	exit 1
+fi
+
+ZIG_DOWNLOAD_JSON_URL="https://ziglang.org/download/index.json"
+CACHED_JSON="$ZIG_HOME/zig-download.json"
+
+usage() {
+	cat <<-EOF
+	Usage: $(basename "$0") [options] [COMMAND] [args]
+
+	Commands:
+	  ls (none)     List all installed versions
+	  ls-remote     List all available versions
+	  stable        Install and use the latest stable version
+	  master        Install and use the latest master version
+	  install VERSION
+	                Install the specified version
+	  use [VERSION] Use the specified version
+	                (default: latest stable)
+	  rtpath [VERSION]
+	                Print the installation path of the specified version
+	                (default: the active runtime)
+	  help          Display this help message
+
+	Options:
+	  --download-only
+	                Only download the specified version without using it
+	  --arch ARCH
+	                Specify the architecture to download
+	                (default: $(uname -m))
+	EOF
+}
+
+z_json() {
+	# if the cached json file is older than 1 hour, download a new one
+	if [ ! -f "$CACHED_JSON" ] || [ "$(find "$CACHED_JSON" -mmin +60)" ]; then
+		curl -sL "$ZIG_DOWNLOAD_JSON_URL" -o "$CACHED_JSON"
+	fi
+	cat "$CACHED_JSON"
+}
+
+z_arch() {
+	echo "${Z_ARCH:-$(uname -m)}"
+}
+
+z_ls() {
+	find "$ZIG_HOME" -maxdepth 1 -type d -name "zig-*" -exec basename {} \;
+}
+
+z_ls_remote() {
+	# versions are the keys of the json object
+	local all_versions master_version version
+	all_versions=$(z_json | jq -r 'keys[]' | sort -rV)
+	master_version=$(z_json | jq -r '.master.version')
+
+	echo "master($master_version)"
+
+	for version in $all_versions; do
+		if [ "$version" != "master" ]; then
+			echo "$version"
+		fi
+	done
+}
+
+z_download() {
+	if [ -n "$(z_rt "$1")" ]; then
+		echo "Version $1 already installed, skipping download"
+		return 0
+	fi
+
+	local artifact shasum size tmp 
+	artifact=$(z_json | jq -r ".\"$1\".\"$(z_arch)-linux\"")
+	shasum=$(echo "$artifact" | jq -r '.shasum')
+	size=$(echo "$artifact" | jq -r '.size')
+
+	tmp=$(mktemp)
+	# shellcheck disable=SC2064
+	trap "rm -f $tmp" EXIT
+
+	echo "Downloading version $1 tarball for $(z_arch)-linux"
+	curl -sL "$(echo "$artifact" | jq -r '.tarball')" -o "$tmp"
+	if [ "$(stat -c %s "$tmp")" != "$size" ]; then
+		>&2 echo "Downloaded file size mismatch"
+		exit 1
+	fi
+	if [ "$(shasum -a 256 "$tmp" | cut -d' ' -f1)" != "$shasum" ]; then
+		>&2 echo "Checksum mismatch"
+		exit 1
+	fi
+
+	tar -xf "$tmp" -C "$ZIG_HOME"
+	Z_RT=$(tar -tf "$tmp" | head -n1 | xargs basename)
+}
+
+z_rt() {
+	find "$ZIG_HOME" -maxdepth 1 -type d -name "zig-linux-$(z_arch)-$1" -exec basename {} + | sort -rV | head -n1
+}
+
+z_use() {
+	local rt
+	rt="$1"
+	if [ -z "$rt" ]; then
+		>&2 echo "Runtime $1 not found"
+		return 1
+	fi
+	echo "Using $rt"
+	echo "$rt" > "$ZIG_HOME/runtime"
+	export ZIG_RUNTIME="$rt"
+}
+
+z_rtpath() {
+	local rt
+	rt=$(z_rt "$1")
+	if [ -z "$rt" ]; then
+		>&2 echo "Version $1 not found"
+		return 1
+	fi
+	echo "$ZIG_HOME/$rt"
+}
+
+z_main() {
+	local args=() cmd="ls" download_only stable
+	while [ "$#" -gt 0 ]; do
+		case "$1" in
+			--download-only)
+				download_only=1
+				shift
+				;;
+			--arch)
+				Z_ARCH="$2"
+				shift 2
+				;;
+			-*)
+				>&2 echo "Unknown option: $1"
+				usage
+				exit 1
+				;;
+			stable|master|ls|ls-remote|install|use|rtpath|help)
+				cmd="$1"
+				shift
+				;;
+			*)
+				args+=("$1")
+				shift
+				;;
+		esac
+	done
+
+	stable=$(z_json | jq -r keys[] | sort -rV | grep -v "master" | head -n1)
+	if [ -z "$stable" ]; then
+		>&2 echo "No stable version found"
+		exit 1
+	fi
+
+	case "$cmd" in
+		stable)
+			z_download "$stable"
+			if [ -z "$download_only" ]; then
+				z_use "$Z_RT"
+			fi
+			;;
+		master)
+			z_download "master"
+			if [ -z "$download_only" ]; then
+				z_use "$Z_RT"
+			fi
+			;;
+		ls)
+			z_ls
+			;;
+		ls-remote)
+			z_ls_remote
+			;;
+		install)
+			if [ -z "${args[0]}" ]; then
+				>&2 echo "No version specified"
+				exit 1
+			fi
+			z_download "${args[0]}"
+			if [ -z "$download_only" ]; then
+				z_use "$Z_RT"
+			fi
+			;;
+		use)
+			if [ -z "${args[0]}" ]; then
+				z_use "$(z_rt "$stable")"
+			# if starts with "zig-" then it's a full path
+			elif [[ "${args[0]}" == "zig-"* ]]; then
+				z_use "${args[0]}"
+			else
+				z_use "$(z_rt "${args[0]}")"
+			fi
+			;;
+		rtpath)
+			if [ -z "${args[0]}" ]; then
+				z_rtpath
+			else
+				z_rtpath "${args[0]}"
+			fi
+			;;
+		help)
+			usage
+			;;
+		*)
+			>&2 echo "Hit unreachable code"
+			exit 1
+			;;
+	esac
+}
+
+z_main "$@"

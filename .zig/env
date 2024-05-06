@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+ZIG_HOME="$HOME/.zig"
+export ZIG_HOME
+
+ZIG_RUNTIME=
+if [ -f "$ZIG_HOME/runtime" ]; then
+    ZIG_RUNTIME="$(cat "$ZIG_HOME/runtime")"
+fi
+export ZIG_RUNTIME

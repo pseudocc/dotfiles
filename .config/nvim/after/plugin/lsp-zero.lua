@@ -11,20 +11,16 @@ lsp0.preset 'recommended'
 lsp0.ensure_installed {
   'lua_ls',
   'denols',
-  'tsserver',
+  'ts_ls',
   'clangd',
   'bashls',
   'pyright',
+  'zls',
 }
 
 lsp0.configure('denols', {
   root_dir = nvim_lsp.util.root_pattern('deno.json', 'deno.jsonc'),
   single_file_support = false,
-})
-
-lsp0.configure('tsserver', {
-  root_dir = nvim_lsp.util.root_pattern('package.json'),
-  single_file_support = true,
 })
 
 local cmp_sel = { behavior = cmp.SelectBehavior.Select }

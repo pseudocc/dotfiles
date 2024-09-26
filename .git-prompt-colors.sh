@@ -1,16 +1,15 @@
 #!/bin/bash
-# This is the custom theme template for gitprompt.sh
+# vim: ts=2:et
 
-# These are the defaults from the "Default" theme 
-# You just need to override what you want to have changed
-
-git_username() {
-  result=$(git config user.name)
-  if [[ -z $result ]]; then
-    echoc "\[${DimWhite}\]" "undefined"
-  else
-    echoc "\[${BoldGreen}\]" "${result}"
-  fi
+git_user() {
+  local result
+  for field in nick name; do
+    result=$(git config user.${field})
+    if [ -n "$result" ]; then
+      echo "$result"
+      return
+    fi
+  done
 }
 
 override_git_prompt_colors() {
@@ -58,8 +57,8 @@ override_git_prompt_colors() {
   # GIT_PROMPT_START_USER="_LAST_COMMAND_INDICATOR_ ${Yellow}${PathShort}${ResetColor}"
   # GIT_PROMPT_START_ROOT="_LAST_COMMAND_INDICATOR_ ${GIT_PROMPT_START_USER}"
 
-  GIT_USERNAME=$(git config user.name)
-  if [[ -z ${GIT_USERNAME} ]]; then
+  GIT_USERNAME=$(git_user)
+  if [ -z "$GIT_USERNAME" ]; then
     GIT_USERNAME="${DimWhite}undefined${ResetColor}"
   else
     GIT_USERNAME="${BoldGreen}${GIT_USERNAME}${ResetColor}"

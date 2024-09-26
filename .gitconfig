@@ -2,6 +2,7 @@
 [core]
 	editor = nvim
 [user]
+	nick = pseudoc
 	name = Atlas Yu
 	email = atlas.yu@canonical.com
 	signingKey = 2971B988CC350CAC0728420B3EF18CAD891965D5

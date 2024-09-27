@@ -104,15 +104,23 @@ z_rt() {
 }
 
 z_use() {
-	local rt
+	local rt rtpath
 	rt="$1"
-	if [ -z "$rt" ]; then
+	if [ ! -d "$ZIG_HOME/$rt" ]; then
 		>&2 echo "Runtime $1 not found"
 		return 1
 	fi
 	echo "Using $rt"
 	echo "$rt" > "$ZIG_HOME/runtime"
 	export ZIG_RUNTIME="$rt"
+
+	rtpath="$ZIG_HOME/$rt"
+	[ -x "$rtpath/zig" ] && ln -sf "$rtpath/zig" "$HOME/.local/bin/zig"
+	if [ -x "$rtpath/zls" ]; then
+		ln -sf "$rtpath/zls" "$HOME/.local/bin/zls"
+		local mason_zls="$HOME/.local/share/nvim/mason/bin/zls"
+		[ -L "$mason_zls" ] && ln -sf "$rtpath/zls" "$mason_zls"
+	fi
 }
 
 z_rtpath() {

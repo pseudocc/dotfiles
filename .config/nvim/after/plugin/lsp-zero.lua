@@ -5,7 +5,7 @@ end
 
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
-local nvim_lsp = require 'lspconfig'
+local lspconfig = require 'lspconfig'
 
 lsp0.preset 'recommended'
 lsp0.ensure_installed {
@@ -19,7 +19,12 @@ lsp0.ensure_installed {
 }
 
 lsp0.configure('denols', {
-  root_dir = nvim_lsp.util.root_pattern('deno.json', 'deno.jsonc'),
+  root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
+  single_file_support = true,
+})
+
+lsp0.configure('ts_ls', {
+  root_dir = lspconfig.util.root_pattern('package.json'),
   single_file_support = false,
 })
 
